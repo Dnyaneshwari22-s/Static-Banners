@@ -1,0 +1,238 @@
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #aab2ba, #6d8dad);
+  font-family: Arial, sans-serif;
+}
+.banner,
+.video-column video,
+.gif-box {
+  background: #d0d9e0;
+  padding: 10px;
+  border-radius: 14px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.wrapper,
+.video-column,
+.gif-container {
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.wrapper{
+  display:grid;
+  grid-template-columns:repeat(3,auto);
+  gap:25px;
+  justify-content:center;
+}
+
+.banner{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  box-shadow:0 6px 15px rgba(0,0,0,.25);
+  cursor:pointer;
+}
+
+.banner img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s ease, transform 5s ease;
+}
+
+.banner img.active{
+  opacity:1;
+  transform:scale(1.1);
+}
+
+/* Overlay content */
+.content{
+  position:absolute;
+  bottom:25px; /* moved slightly above progress bar */
+  left:15px;
+  color:#fff;
+  animation: fadeUp 2s infinite alternate;
+}
+
+.text{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.cta{
+  padding:8px 16px;
+  background:#ff3b3b;
+  color:white;
+  border:none;
+  border-radius:20px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.cta:hover{
+  background:#d90000;
+}
+
+/* Progress Bar at Bottom */
+.progress{
+  position:absolute;
+  bottom:0;
+  left:0;
+  height:6px;
+  width:0%;
+  background:#00ff7f;
+  z-index:10;
+  border-radius: 0 0 14px 14px;
+  transition: width 2s linear;
+}
+
+/* Animation */
+@keyframes fadeUp{
+  from{ opacity:0.7; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* Sizes */
+.b300x250{width:300px;height:250px;}
+.b160x600{width:160px;height:600px;}
+.b300x600{width:300px;height:600px;}
+.b728x90{width:728px;height:90px;}
+.b970x250{width:970px;height:250px;}
+.b300x50{width:300px;height:50px;}
+.b320x50{width:320px;height:50px;}
+
+.wide2{grid-column:span 2;}
+.wide3{grid-column:span 3;}
+
+
+.video-column {
+    display: flex;
+    flex-direction: column; /* IMPORTANT: videos down */
+    align-items: center;
+    gap: 20px;
+  }
+
+  video {
+    background: #000;
+    border-radius: 8px;
+  }
+
+  .v-16x9 {
+    width: 320px;
+    height: 180px;
+  }
+
+  .v-9x16 {
+    width: 180px;
+    height: 320px;
+  }
+
+  .v-2x3 {
+    width: 200px;
+    height: 300px;
+  }
+
+
+  .gif-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.gif-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+/* Smooth zoom + lift */
+.gif-box:hover {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* GIF animation smoothness */
+.gif-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+/* Inner zoom animation */
+.gif-box:hover img {
+  transform: scale(1.15);
+}
+
+/* Sizes */
+.v-16x9 {
+  width: 320px;
+  height: 180px;
+}
+
+.v-9x16 {
+  width: 180px;
+  height: 320px;
+}
+
+.v-2x3 {
+  width: 200px;
+  height: 300px;
+}
+.gif-box::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.25),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.gif-box:hover::after {
+  transform: translateX(100%);
+}
+.title,
+h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+
+
+/* Responsive */
+@media(max-width:900px){
+  .wrapper{
+    grid-template-columns:1fr;
+  }
+  .banner{
+    margin:0 auto 20px auto;
+  }
+}
